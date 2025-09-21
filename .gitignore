@@ -3,7 +3,9 @@
 #testing
 /public/images/
 /src/app/home
-/src/app/components/
+/src/app/components/layout
+/src/app/components/UI
+
 
 # dependencies
 /node_modules
