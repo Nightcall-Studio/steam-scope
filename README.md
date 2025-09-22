@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+SteamScope 🎮💸
 
-## Getting Started
+A powerful web app to track Steam game prices, sales, and library value.
 
-First, run the development server:
+Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+SteamScope is a web application developed by Nightcall Studio that helps gamers keep track of Steam game prices, receive instant sale notifications, and evaluate their game libraries. Built with Next.js, TypeScript, and styled with Tailwind CSS, SteamScope offers a smooth, responsive interface with strong SEO optimization.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Whether you’re hunting for the best deals or curious about how much you’ve spent on Steam, SteamScope gives you the tools to stay informed and make smarter gaming purchases.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Features ✨
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🔔 Instant Sale Alerts – Get notified when your tracked games go on sale.
 
-## Learn More
+📑 Personalized Watchlists – Keep an eye on the titles you care about most.
 
-To learn more about Next.js, take a look at the following resources:
+💰 Spending Tracker – See how much money you’ve spent on Steam.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+📊 Value-per-Price Calculator – Discover the true worth of your Steam library.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📈 Historical Price Trends – Analyze price changes over time.
 
-## Deploy on Vercel
+⚖️ Bulk Game Comparisons – Compare multiple games to find the best value.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+📱 Responsive UI – Optimized for both desktop and mobile.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Tech Stack 🛠
+
+Framework: Next.js
+
+Language: TypeScript
+
+Styling: Tailwind CSS
+
+SEO: Optimized with Next.js best practices
