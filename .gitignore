@@ -3,9 +3,6 @@
 #testing
 /public/images/
 /src/app/home/CardSection.tsx
-/src/app/home/SearchInput.tsx
-
-
 /src/app/components/layout
 
 
