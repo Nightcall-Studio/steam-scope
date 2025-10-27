@@ -30,12 +30,12 @@ const CardSection = () => {
                 Name
               </span>
               <h3 className="text-[28px] font-semibold max-lg:text-[26px] text-wrap  max-lg:leading-[22px] h-auto">
-                Sex By Seymur
+                Dead By Daylight
               </h3>
             </div>
           </div>
           <div className="flex flex-col justify-center items-center text-center">
-            <ul className="flex flex-wrap items-center justify-center gap-10 max-lg:justify-center max-lg:gap-12 max-lg:gap-y-6 font-semibold text-[20px] max-xl:gap-15 ">
+            <ul className="flex flex-wrap items-center justify-center gap-10 max-lg:justify-center max-lg:gap-12 max-lg:gap-y-6 font-semibold text-[20px] max-xl:gap-15 lg:pr-5">
               <li className="flex flex-col gap-2  items-center justify-center ">
                 <span className="text-white opacity-50 font-bold text-[20px] max-lg:text-[18px] max-lg:font-semibold">
                   Discount
@@ -60,14 +60,7 @@ const CardSection = () => {
                   67.9%
                 </div>
               </li>
-              <li className="flex flex-col gap-2 items-center justify-center">
-                <span className="text-white opacity-50 font-bold text-[20px] max-lg:text-[18px] max-lg:font-semibold">
-                  Release
-                </span>
-                <div className="py-2 rounded-[10px] max-lg:text-[18px] max-lg:font-semibold">
-                  06.09.2025
-                </div>
-              </li>
+
               <li className="flex flex-col gap-2 items-center justify-center">
                 <span className="text-white opacity-50 font-bold text-[20px] max-lg:text-[18px] max-lg:font-semibold">
                   Ends
