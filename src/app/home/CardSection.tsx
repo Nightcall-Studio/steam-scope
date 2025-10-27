@@ -25,17 +25,17 @@ const CardSection = () => {
               />
             </div>
 
-            <div className="flex flex-col justify-center gap-0 max-lg:gap-1">
+            <div className="flex flex-col justify-center gap-0 max-lg:gap-1 max-lg:pl-1">
               <span className="text-[22px] font-medium opacity-70 max-lg:text-[16px]">
                 Name
               </span>
-              <h3 className="text-[28px] font-semibold max-lg:text-[26px] text-wrap  max-lg:leading-[22px] h-auto">
+              <h3 className="truncate text-[28px] font-semibold max-lg:text-[26px]  max-lg:leading-[22px] h-auto max-w-[268px] text-wrap break-words">
                 Dead By Daylight
               </h3>
             </div>
           </div>
           <div className="flex flex-col justify-center items-center text-center">
-            <ul className="flex flex-wrap items-center justify-center gap-10 max-lg:justify-center max-lg:gap-12 max-lg:gap-y-6 font-semibold text-[20px] max-xl:gap-15 lg:pr-5">
+            <ul className="flex flex-wrap items-center justify-center gap-10 max-lg:justify-center max-lg:gap-12 max-lg:gap-y-3 font-semibold text-[20px] max-xl:gap-15 lg:pr-5">
               <li className="flex flex-col gap-2  items-center justify-center ">
                 <span className="text-white opacity-50 font-bold text-[20px] max-lg:text-[18px] max-lg:font-semibold">
                   Discount
