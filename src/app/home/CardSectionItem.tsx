@@ -1,6 +1,22 @@
 import Image from "next/image";
 
-const CardSectionItem = () => {
+interface CardSectionItemProps {
+  name: string;
+  discount: number;
+  price: string;
+  initialprice: string;
+  score: number;
+  image: string;
+}
+
+const CardSectionItem = ({
+  name,
+  discount,
+  price,
+  initialprice,
+  score,
+  image,
+}: CardSectionItemProps) => {
   return (
     <li
       style={{
@@ -13,22 +29,16 @@ const CardSectionItem = () => {
       className="p-[10px] rounded-[20px] bg-white/5 flex justify-between items-center max-xl:flex-col max-lg:gap-4 max-xl:gap-y-5 max-xl:w-fit"
     >
       <div className="flex gap-4 max-md:gap-0 max-lg:flex-col md:flex-row max-md:w-full md:mr-auto md:gap-4 ">
-        <div className="max-lg:w-[272px] lg:w-[214px] max-lg:mb-[10px] md:w-[180px] ">
-          <Image
-            src="/images/dbd-image.png"
-            alt="DBD image"
-            width={272}
-            height={100}
-            className="rounded-[10px] object-cover max-h-[100px] "
-          />
+        <div className="relative max-lg:w-[272px] lg:w-[214px] md:w-[180px] h-[100px] max-lg:mb-[10px] overflow-hidden rounded-[10px]">
+          <Image src={image} alt={name} fill className="object-center" />
         </div>
 
         <div className="flex flex-col justify-center gap-0 max-lg:gap-1 max-lg:pl-1">
           <span className="text-[22px] font-medium opacity-70 max-lg:text-[16px]">
             Name
           </span>
-          <h3 className="truncate text-[28px] font-semibold max-lg:text-[26px]  max-lg:leading-[22px] h-auto max-w-[268px] text-wrap break-words">
-            Dead By Daylight
+          <h3 className="w-[500px] max-lg:w-[268px] truncate text-[24px] font-medium max-lg:text-[26px] leading-[30px]  max-lg:leading-[25px] h-auto  text-wrap break-words">
+            {name}
           </h3>
         </div>
       </div>
@@ -39,30 +49,31 @@ const CardSectionItem = () => {
               Discount
             </span>
             <div className="bg-radial from-[#00C707] to-[#027D06] px-4 max-lg:px-2 py-2 rounded-[10px] text-center max-lg:text-[18px] max-lg:font-semibold">
-              -40%
+              -{discount}%
             </div>
           </li>
           <li className="flex flex-col gap-2 items-center justify-center">
             <span className="text-white opacity-50 font-bold text-[20px] max-lg:text-[18px] max-lg:font-semibold">
               Price
             </span>
-            <div className="py-2 rounded-[10px] max-lg:text-[18px]">$20</div>
+            <div className="py-2 rounded-[10px] max-lg:text-[18px]">
+              ${price}
+            </div>
+          </li>
+          <li className="flex flex-col gap-2 items-center justify-center">
+            <span className="text-white opacity-50 font-bold text-[20px] max-lg:text-[18px] max-lg:font-semibold">
+              Initial Price
+            </span>
+            <div className="py-2 rounded-[10px] max-lg:text-[18px]">
+              ${initialprice}
+            </div>
           </li>
           <li className="flex flex-col gap-2 items-center justify-center">
             <span className="text-white opacity-50 font-bold text-[20px] max-lg:text-[18px] max-lg:font-semibold">
               Rating
             </span>
             <div className="py-2 rounded-[10px] max-lg:text-[18px] max-lg:font-semibold">
-              67.9%
-            </div>
-          </li>
-
-          <li className="flex flex-col gap-2 items-center justify-center">
-            <span className="text-white opacity-50 font-bold text-[20px] max-lg:text-[18px] max-lg:font-semibold">
-              Ends
-            </span>
-            <div className="py-2 rounded-[10px] max-lg:text-[18px] max-lg:font-semibold">
-              08.09.2025
+              {score.toFixed(2)}%
             </div>
           </li>
         </ul>
