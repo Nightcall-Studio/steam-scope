@@ -13,8 +13,8 @@ const ContentWrapper = (props: Props) => {
         w-full m-auto
         max-w-[288px]
         sm:max-w-[388px]
-        md:max-w-[558px]
-        lg:max-w-[896px]
+        md:max-w-[488px]
+        lg:max-w-[750px]
         xl:max-w-[1280px]
         xl:px-0
       "

@@ -23,7 +23,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="flex justify-between items-center font-semibold text-[1.1rem] py-5">
+    <header className="flex justify-between items-center font-semibold text-[1.1rem] py-8">
       <Link href={"/"}>
         <Image
           src="/images/logo.svg"

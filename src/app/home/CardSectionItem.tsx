@@ -30,7 +30,13 @@ const CardSectionItem = ({
     >
       <div className="flex gap-4 max-md:gap-0 max-lg:flex-col md:flex-row max-md:w-full md:mr-auto md:gap-4 ">
         <div className="relative max-lg:w-[272px] lg:w-[214px] md:w-[180px] h-[100px] max-lg:mb-[10px] overflow-hidden rounded-[10px]">
-          <Image src={image} alt={name} fill className="object-center" />
+          <Image
+            src={image}
+            alt={name}
+            fill
+            loading="eager"
+            className="object-center"
+          />
         </div>
 
         <div className="flex flex-col justify-center gap-0 max-lg:gap-1 max-lg:pl-1">
