@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import CardSectionItem from "./CardSectionItem";
 import SearchInput from "./SearchInput";
 import type { Filters } from "../components/UI/FilterModal";
@@ -127,29 +127,87 @@ export default function CardSection({
         onApply={handleApplyFilters}
       />
 
-      <ul className="flex flex-col gap-4 max-xl:justify-center max-xl:items-center">
-        {filteredGames.length > 0 ? (
-          filteredGames.map((game) => (
-            <CardSectionItem
-              key={game.appid}
-              name={game.name}
-              discount={game.discount}
-              price={(game.price / 100).toFixed(2)}
-              score={
-                game.positive + game.negative > 0
-                  ? (game.positive / (game.positive + game.negative)) * 100
-                  : 0
-              }
-              initialprice={(game.initialprice / 100).toFixed(2)}
-              image={`https://cdn.cloudflare.steamstatic.com/steam/apps/${game.appid}/header.jpg`}
-            />
-          ))
-        ) : (
-          <p className="text-center text-white/70 mt-10 text-lg">
-            No games found.
-          </p>
-        )}
-      </ul>
+      {/* Suspense boundary just for cards */}
+      <Suspense fallback={<CardSkeletonList count={8} />}>
+        <ul className="flex flex-col gap-4 max-xl:justify-center max-xl:items-center">
+          {filteredGames.length > 0 ? (
+            filteredGames.map((game) => (
+              <CardSectionItem
+                key={game.appid}
+                name={game.name}
+                discount={game.discount}
+                price={(game.price / 100).toFixed(2)}
+                score={
+                  game.positive + game.negative > 0
+                    ? (game.positive / (game.positive + game.negative)) * 100
+                    : 0
+                }
+                initialprice={(game.initialprice / 100).toFixed(2)}
+                image={`https://cdn.cloudflare.steamstatic.com/steam/apps/${game.appid}/header.jpg`}
+              />
+            ))
+          ) : (
+            <p className="text-center text-white/70 mt-10 text-lg">
+              No games found.
+            </p>
+          )}
+        </ul>
+      </Suspense>
     </section>
+  );
+}
+
+/* ---------------- Skeleton Loader ---------------- */
+
+function CardSkeletonList({ count = 6 }: { count?: number }) {
+  return (
+    <ul className="flex flex-col gap-4 mt-6 animate-pulse">
+      {Array.from({ length: count }).map((_, i) => (
+        <li
+          key={i}
+          className="p-[10px] rounded-[20px] bg-white/5 flex justify-between items-center 
+                     max-xl:flex-col max-lg:gap-4 max-xl:gap-y-5 max-xl:w-fit border border-white/10 relative overflow-hidden"
+        >
+          <div className="flex gap-4 max-lg:flex-col md:flex-row w-full md:gap-4">
+            <div className="relative max-lg:w-[272px] lg:w-[214px] md:w-[180px] h-[100px] bg-white/10 rounded-[10px] overflow-hidden">
+              <Shimmer />
+            </div>
+
+            <div className="flex flex-col justify-center gap-2 w-full">
+              <div className="h-[22px] bg-white/10 rounded-md w-1/3 relative overflow-hidden">
+                <Shimmer />
+              </div>
+              <div className="h-[26px] bg-white/10 rounded-md w-2/3 relative overflow-hidden">
+                <Shimmer />
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center text-center w-full mt-4">
+            <ul className="flex flex-wrap justify-center gap-10 max-lg:gap-6 font-semibold text-[20px] lg:pr-5">
+              {Array.from({ length: 4 }).map((_, j) => (
+                <li
+                  key={j}
+                  className="flex flex-col gap-2 items-center justify-center"
+                >
+                  <div className="h-[20px] w-[70px] bg-white/10 rounded-md relative overflow-hidden">
+                    <Shimmer />
+                  </div>
+                  <div className="h-[28px] w-[90px] bg-white/10 rounded-md relative overflow-hidden">
+                    <Shimmer />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Shimmer() {
+  return (
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#00c6ff33] to-transparent animate-[shimmer_1.5s_infinite] rounded-md" />
   );
 }
