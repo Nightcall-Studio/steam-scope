@@ -8,7 +8,7 @@ import Link from "next/link";
 const NavLinks = ({ className = "" }) => (
   <ul className={`flex flex-col gap-6 ${className}`}>
     <li>
-      <Link href={"#"}>Home</Link>
+      <Link href={"/"}>Home</Link>
     </li>
     <li>
       <Link href={"#"}>About</Link>
@@ -34,12 +34,10 @@ const Header = () => {
         />
       </Link>
 
-      {/* Desktop Links */}
       <nav className="hidden lg:flex gap-8 text-[18px] font-semibold cursor-pointer">
         <NavLinks className="flex-row gap-8" />
       </nav>
 
-      {/* Modal Open Btn */}
       <button className="lg:hidden" onClick={() => setIsOpen(true)}>
         <Image
           src="/images/burger-menu-icon.svg"
@@ -49,7 +47,6 @@ const Header = () => {
         />
       </button>
 
-      {/* Mobile Modal Menu */}
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <NavLinks className="justify-center items-center" />
       </Modal>

@@ -1,12 +1,12 @@
 import HeroSection from "./home/HeroSection";
-import CardSection from "./home/CardSection";
+import CardSectionServer from "./home/CardSectionServer";
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
       <section>
-        <CardSection />
+        <CardSectionServer />
       </section>
     </>
   );

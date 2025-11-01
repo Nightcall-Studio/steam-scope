@@ -25,12 +25,16 @@ type SortOption =
   | "ratingHighToLow"
   | "ratingLowToHigh";
 
-const CardSection = () => {
-  const [games, setGames] = useState<SteamSpyGame[]>([]);
-  const [filteredGames, setFilteredGames] = useState<SteamSpyGame[]>([]);
+export default function CardSection({
+  initialGames,
+}: {
+  initialGames: SteamSpyGame[];
+}) {
+  const [games, setGames] = useState<SteamSpyGame[]>(initialGames);
+  const [filteredGames, setFilteredGames] =
+    useState<SteamSpyGame[]>(initialGames);
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedTerm, setDebouncedTerm] = useState("");
-  const [loading, setLoading] = useState(true);
   const [searchLoading, setSearchLoading] = useState(false);
   const [sortOption, setSortOption] = useState<SortOption>("none");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,22 +49,6 @@ const CardSection = () => {
     return () => clearTimeout(timeout);
   }, [searchTerm]);
 
-  // fetch data
-  useEffect(() => {
-    fetch("/api/steamspy")
-      .then((res) => res.json())
-      .then((data) => {
-        const gamesArray: SteamSpyGame[] = Object.values(data);
-        const discounted = gamesArray.filter(
-          (game) => game.discount && game.discount > 0
-        );
-        setGames(discounted);
-        setFilteredGames(discounted);
-      })
-      .catch((err) => console.error("Loading error:", err))
-      .finally(() => setLoading(false));
-  }, []);
-
   // filter by search
   useEffect(() => {
     const filtered = games.filter((game) =>
@@ -72,7 +60,6 @@ const CardSection = () => {
   // sort logic
   useEffect(() => {
     let sorted = [...filteredGames];
-
     const getRating = (g: SteamSpyGame) =>
       g.positive + g.negative > 0
         ? (g.positive / (g.positive + g.negative)) * 100
@@ -97,15 +84,14 @@ const CardSection = () => {
       case "ratingLowToHigh":
         sorted.sort((a, b) => getRating(a) - getRating(b));
         break;
-      case "none":
       default:
         break;
     }
 
     setFilteredGames(sorted);
-  }, [sortOption]); // 👈 import modal
+  }, [sortOption]);
 
-  // handle filters from modal
+  // handle filters
   const handleApplyFilters = (filters: Filters) => {
     if (filters.sortByPrice === "desc") setSortOption("priceHighToLow");
     else if (filters.sortByPrice === "asc") setSortOption("priceLowToHigh");
@@ -114,11 +100,9 @@ const CardSection = () => {
     else setSortOption("none");
   };
 
-  if (loading) return <p className="text-center mt-10">Loading..</p>;
-
   return (
     <section>
-      {/* Search and Filter Section */}
+      {/* Search + Filter UI */}
       <div className="flex flex-col sm:flex-row gap-3 mb-6 justify-between items-center ">
         <SearchInput onSearchChange={setSearchTerm} />
         <div className="flex items-center gap-3 w-full sm:w-auto">
@@ -168,6 +152,4 @@ const CardSection = () => {
       </ul>
     </section>
   );
-};
-
-export default CardSection;
+}
