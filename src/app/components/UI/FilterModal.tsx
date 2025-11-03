@@ -100,7 +100,7 @@ export default function FilterModal({
 
         <button
           onClick={handleApply}
-          className="mt-4 w-full py-2 bg-white/20 hover:bg-white/30 transition rounded-lg"
+          className="mt-4 w-full py-2 bg-white/20 hover:bg-white/30 transition rounded-lg cursor-pointer"
         >
           Apply Filters
         </button>
