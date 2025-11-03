@@ -134,6 +134,7 @@ export default function CardSection({
             filteredGames.map((game) => (
               <CardSectionItem
                 key={game.appid}
+                appid={game.appid}
                 name={game.name}
                 discount={game.discount}
                 price={(game.price / 100).toFixed(2)}
