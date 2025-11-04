@@ -3,8 +3,8 @@
 import { Suspense, useEffect, useState } from "react";
 import CardSectionItem from "./CardSectionItem";
 import SearchInput from "./SearchInput";
-import type { Filters } from "../components/UI/FilterModal";
-import FilterModal from "../components/UI/FilterModal";
+import type { Filters } from "../components/UI/FreeFilterModal";
+import FreeFilterModal from "../components/UI/FreeFilterModal";
 
 interface SteamSpyGame {
   appid: number;
@@ -16,14 +16,7 @@ interface SteamSpyGame {
   negative: number;
 }
 
-type SortOption =
-  | "none"
-  | "priceHighToLow"
-  | "priceLowToHigh"
-  | "discountHighToLow"
-  | "discountLowToHigh"
-  | "ratingHighToLow"
-  | "ratingLowToHigh";
+type SortOption = "none" | "ratingHighToLow" | "ratingLowToHigh";
 
 export default function CardSection({
   initialGames,
@@ -66,18 +59,6 @@ export default function CardSection({
         : 0;
 
     switch (sortOption) {
-      case "priceHighToLow":
-        sorted.sort((a, b) => b.price - a.price);
-        break;
-      case "priceLowToHigh":
-        sorted.sort((a, b) => a.price - b.price);
-        break;
-      case "discountHighToLow":
-        sorted.sort((a, b) => b.discount - a.discount);
-        break;
-      case "discountLowToHigh":
-        sorted.sort((a, b) => a.discount - b.discount);
-        break;
       case "ratingHighToLow":
         sorted.sort((a, b) => getRating(b) - getRating(a));
         break;
@@ -93,9 +74,7 @@ export default function CardSection({
 
   // handle filters
   const handleApplyFilters = (filters: Filters) => {
-    if (filters.sortByPrice === "desc") setSortOption("priceHighToLow");
-    else if (filters.sortByPrice === "asc") setSortOption("priceLowToHigh");
-    else if (filters.sortByRating === "desc") setSortOption("ratingHighToLow");
+    if (filters.sortByRating === "desc") setSortOption("ratingHighToLow");
     else if (filters.sortByRating === "asc") setSortOption("ratingLowToHigh");
     else setSortOption("none");
   };
@@ -121,7 +100,7 @@ export default function CardSection({
         </div>
       </div>
 
-      <FilterModal
+      <FreeFilterModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onApply={handleApplyFilters}
