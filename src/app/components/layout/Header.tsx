@@ -5,19 +5,22 @@ import { useState } from "react";
 import Modal from "../UI/Modal";
 import Link from "next/link";
 
+const navLinkUnderline =
+  "relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full";
+
 const NavLinks = ({ className = "" }) => (
   <ul className={`flex flex-col gap-6 ${className}`}>
     <li>
-      <Link href={"/"}>Home</Link>
+      <Link href={"/"} className={navLinkUnderline}>Home</Link>
     </li>
     <li>
-      <Link href={"/free-games"}>Free Games</Link>
+      <Link href={"/free-games"} className={navLinkUnderline}>Free Games</Link>
     </li>
     <li>
-      <Link href={"/about"}>About</Link>
+      <Link href={"/about"} className={navLinkUnderline}>About</Link>
     </li>
     <li>
-      <Link href={"/faq"}>FAQ</Link>
+      <Link href={"/faq"} className={navLinkUnderline}>FAQ</Link>
     </li>
   </ul>
 );
