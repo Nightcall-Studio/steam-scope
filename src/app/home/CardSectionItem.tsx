@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import DiscountTooltip from "../components/UI/Tooltip";
 
 interface CardSectionItemProps {
   appid: number;
@@ -64,8 +65,9 @@ const CardSectionItem = ({
       <div className="flex flex-col justify-center items-center text-center">
         <ul className="flex flex-wrap items-center justify-center gap-10 max-lg:justify-center max-lg:gap-12 max-lg:gap-y-3 font-semibold text-[20px] max-xl:gap-15 lg:pr-5">
           <li className="flex flex-col gap-2 items-center justify-center">
-            <span className="text-white opacity-50 font-bold text-[20px] max-lg:text-[18px] max-lg:font-semibold">
+            <span className="text-white opacity-50 font-bold text-[20px] max-lg:text-[18px] max-lg:font-semibold flex gap-1.5 items-center">
               Discount
+              <DiscountTooltip />
             </span>
             <div className="bg-radial from-[#00C707] to-[#027D06] px-4 max-lg:px-2 py-2 rounded-[10px] text-center max-lg:text-[18px] max-lg:font-semibold">
               -{discount}%
