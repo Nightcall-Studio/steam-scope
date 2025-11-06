@@ -5,22 +5,39 @@ import { useState } from "react";
 import Modal from "../UI/Modal";
 import Link from "next/link";
 
+interface Props {
+  className?: string;
+  onClickLink?: () => void;
+}
+
 const navLinkUnderline =
   "relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full";
 
-const NavLinks = ({ className = "" }) => (
+const NavLinks = ({ className = "", onClickLink }: Props) => (
   <ul className={`flex flex-col gap-6 ${className}`}>
     <li>
-      <Link href={"/"} className={navLinkUnderline}>Home</Link>
+      <Link href="/" className={navLinkUnderline} onClick={onClickLink}>
+        Home
+      </Link>
     </li>
     <li>
-      <Link href={"/free-games"} className={navLinkUnderline}>Free Games</Link>
+      <Link
+        href="/free-games"
+        className={navLinkUnderline}
+        onClick={onClickLink}
+      >
+        Free Games
+      </Link>
     </li>
     <li>
-      <Link href={"/about"} className={navLinkUnderline}>About</Link>
+      <Link href="/about" className={navLinkUnderline} onClick={onClickLink}>
+        About
+      </Link>
     </li>
     <li>
-      <Link href={"/faq"} className={navLinkUnderline}>FAQ</Link>
+      <Link href="/faq" className={navLinkUnderline} onClick={onClickLink}>
+        FAQ
+      </Link>
     </li>
   </ul>
 );
@@ -30,7 +47,7 @@ const Header = () => {
 
   return (
     <header className="flex justify-between items-center font-semibold text-[1.1rem] py-8">
-      <Link href={"/"}>
+      <Link href="/">
         <Image
           src="/images/logo.svg"
           alt="Logo"
@@ -54,7 +71,10 @@ const Header = () => {
       </button>
 
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <NavLinks className="justify-center items-center" />
+        <NavLinks
+          onClickLink={() => setIsOpen(false)}
+          className="justify-center items-center"
+        />
       </Modal>
     </header>
   );
