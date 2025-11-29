@@ -19,7 +19,6 @@ const ContentWrapper = (props: Props) => {
         xl:px-0
       "
     >
-      <div className="hidden">yes</div>
       {children}
     </div>
   );
