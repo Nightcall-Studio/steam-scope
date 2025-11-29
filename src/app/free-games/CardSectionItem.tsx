@@ -14,9 +14,6 @@ interface CardSectionItemProps {
 const CardSectionItem = ({
   appid,
   name,
-  discount,
-  price,
-  initialprice,
   score,
   image,
 }: CardSectionItemProps) => {
