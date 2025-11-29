@@ -40,6 +40,7 @@ const CardSectionItem = ({
             loading="eager"
             className="object-center"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
+            unoptimized
           />
         </div>
 
@@ -71,7 +72,7 @@ const CardSectionItem = ({
               Free
             </div>
           </li>
-          
+
           <li className="flex flex-col gap-2 items-center justify-center">
             <span className="text-white opacity-50 font-bold text-[20px] max-lg:text-[18px] max-lg:font-semibold">
               Rating

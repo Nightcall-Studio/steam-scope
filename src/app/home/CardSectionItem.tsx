@@ -40,6 +40,7 @@ const CardSectionItem = ({
             loading="eager"
             className="object-center"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
+            unoptimized
           />
         </div>
 
